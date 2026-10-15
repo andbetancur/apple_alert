@@ -22,4 +22,4 @@ jobs:
         with:
           python-version: "3.12"
       - name: Vigilar ~55 minutos
-        run: python iphone_watch.py --hours 0.9 --part MJW44LL/A
+        run: python -u iphone_watch.py --hours 0.9 --part MJW44LL/A
