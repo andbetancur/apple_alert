@@ -40,7 +40,7 @@ PRODUCT_PAGES = {
 
 ZIP_CODE = "32839"                              # Orlando, entre Millenia y Florida Mall
 STORE_KEYWORDS = ["millenia", "florida mall"]   # coincidencia por nombre de tienda
-INTERVAL_SECONDS = 60                           # cada cuánto revisar (+ un poco de aleatoriedad)
+INTERVAL_SECONDS = 30                           # cada cuánto revisar (+ 0-5 s de aleatoriedad)
 
 # Push al celular gratis con la app "ntfy" (iOS/Android): instala la app, suscríbete a este
 # tema y pon el mismo nombre aquí. Usa algo difícil de adivinar. Déjalo "" para desactivar.
@@ -282,7 +282,7 @@ def main():
         if args.once:
             break
         backoff = min(errors, 5) * 60
-        time.sleep(INTERVAL_SECONDS + random.uniform(0, 20) + backoff)
+        time.sleep(INTERVAL_SECONDS + random.uniform(0, 5) + backoff)
 
     print(f"[{now()}] Fin del periodo de vigilancia. Revisiones exitosas: {ok_checks}")
     if ok_checks == 0:
