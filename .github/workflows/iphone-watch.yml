@@ -1,0 +1,25 @@
+name: Vigilar iPhone 18 Pro Max (Orlando)
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: iphone-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+      DEADLINE: "2026-10-17T00:00:00-04:00"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Vigilar ~55 minutos
+        run: python iphone_watch.py --hours 0.9
